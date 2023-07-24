@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block contact %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="uni-single-departments-treatments-investigation">
+            <h3 class="uni-single-departments-right-title">Medicines</h3>
+            <div class="uni-divider"></div>
+            <ul>
+                {% for medicine in medicines %}
+                <li>
+                    {{ medicine.name }} <span>{{ medicine.price }} dollars</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--DOCTORS-->
+<div class="uni-single-department-doctor">
+    <h3 class="uni-single-departments-right-title">Doctors</h3>
+    <div class="uni-divider"></div>
+
+    <div class="uni-single-department-doctor-body">
+        <div class="row">
+            {% for doctor in doctors %}
+            <div class="col-md-3">
+                <div class="uni-single-department-doctor-item">
+                    <div class="item-img">
+                        <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}" class="img-responsive">
+                        <!-- استخدمنا doctor.image.url لعرض الصورة التي تمت إضافتها للطبيب -->
+                    </div>
+                    <div class="item-caption">
+                        <div class="item-caption-head">
+                            <div class="col-md-3 col-sm-2 col-xs-3 uni-clear-padding">
+                                <div class="item-icons">
+                                    <img src="{% static 'images/icons_box/icon_4/icon-5.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-sm-10 col-xs-9 uni-clear-padding">
+                                <div class="item-title">
+                                    <h4>{{ doctor.name }}</h4>
+                                    <span>{{ doctor.degree }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-caption-info">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td>Degree</td>
+                                        <td>{{ doctor.degree }}</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Availability</td>
+                                        <td>{{ doctor.availability }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

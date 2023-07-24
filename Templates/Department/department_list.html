@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block contact %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Departments</title>
+
+    
+    <style>
+        /* Apply flexbox to the row to create a grid layout */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Make each department item equal width and wrap to the next line if necessary */
+        .col-md-4 {
+            flex: 0 0 33.33%; /* 3 items per row (100% / 3) */
+            max-width: 33.33%; /* 3 items per row (100% / 3) */
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        /* Style for the container of each department item */
+        .uni-departments-default {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        /* Style for the department name */
+        .uni-departments-default h4 {
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        /* Style for the department description */
+        .uni-departments-default p {
+            font-size: 14px;
+        }
+
+        /* Style for the department image */
+        .uni-departments-default .item-icons img {
+            width: 100%; /* Ensure the image fills the container */
+            height: auto; /* Maintain the aspect ratio of the image */
+        }
+    </style>
+</head>
+
+<body>
+    
+
+<div class="uni-departments-body">
+    <div class="container">
+        <div class="row">
+            {% for department in departments %}
+            <div class="col-md-4">
+                <div class="uni-departments-default">
+                    <!-- Display the department image -->
+                    <div class="item-icons">
+                        <!-- Use the static URL to get the image path -->
+                        <a href="#"><img src="{{ department.image.url }}" alt="{{ department.name }} Image" class="img-responsive"></a>
+                    </div>
+                    <div class="item-caption">
+                        <h4><a href="{% url 'department_detail' department.id %}">{{ department.name }}</a></h4>
+                        <p>{{ department.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

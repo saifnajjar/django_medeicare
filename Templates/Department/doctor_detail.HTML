@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contact %}
+
+
+<div class="uni-doctor-details-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="uni-our-doctor-item-default">
+                    <div class="item-img">
+                        <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}" class="img-responsive">
+                    </div>
+                    <div class="item-caption">
+                        <div class="item-caption-head">
+                            <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
+                                <div class="item-icons">
+                                    <img src="{% static 'images/icons_box/icon_4/icon-5.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
+                                <div class="item-title">
+                                    <h4>{{ doctor.name }}</h4>
+                                    <span>{{ doctor.degree }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-caption-info">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <td>Degrees</td>
+                                    <td>{{ doctor.degree }}</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Mon - Fri</td>
+                                    <td>{{ doctor.availability }}</td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="2">
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="uni-doctor-details-right">
+
+                    <!-- SUMMARY -->
+                    <div class="uni-doctor-details-summary">
+                        <div class="uni-doctor-details-title">
+                            <h3>Summary</h3>
+                            <div class="uni-divider"></div>
+                        </div>
+                        <p>
+                            {{ doctor.summary }}
+                        </p>
+                    </div>
+
+                    <!-- EDUCATION/DEGREE -->
+                    <div class="uni-doctor-details-degrees">
+                        <div class="uni-doctor-details-title">
+                            <h3>education/degrees</h3>
+                            <div class="uni-divider"></div>
+                        </div>
+                        <ul>
+                            {% for education in doctor.education_set.all %}
+                                <li>
+                                    <span>{{ education.year }} - {{ education.description }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    
+
+                    <!-- CONTACT -->
+                    <div class="uni-doctor-details-contact">
+                        <div class="uni-doctor-details-title">
+                            <h3>Contact</h3>
+                            <div class="uni-divider"></div>
+                        </div>
+                        <ul>
+                            <li><i class="fa fa-map-marker" aria-hidden="true"></i> {{ doctor.address }}</li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i> {{ doctor.phone_number }}</li>
+                            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> {{ doctor.email }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

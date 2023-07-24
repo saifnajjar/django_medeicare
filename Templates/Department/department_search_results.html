@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block contact %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ department.name }} Search Results</title>
+</head>
+<body>
+    <h1>Search Results for "{{ query }}" in {{ department.name }}</h1>
+    {% if doctors %}
+    <h2>Doctors</h2>
+    <ul>
+        {% for doctor in doctors %}
+        <li>
+            <strong>{{ doctor.name }}</strong><br>
+            Academic Degree: {{ doctor.academic_degree }}<br>
+            Free Time: {{ doctor.free_time }}<br>
+            <img src="{{ doctor.doctor_image.url }}" alt="{{ doctor.name }} Image">
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No doctors found for "{{ query }}".</p>
+    {% endif %}
+
+    {% if medicines %}
+    <h2>Medicines</h2>
+    <ul>
+        {% for medicine in medicines %}
+        <li>
+            <strong>{{ medicine.name }}</strong><br>
+            Price: ${{ medicine.price }}<br>
+            <img src="{{ medicine.medicine_image.url }}" alt="{{ medicine.name }} Image">
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No medicines found for "{{ query }}".</p>
+    {% endif %}
+</body>
+</html>
+
+{% endblock %}
