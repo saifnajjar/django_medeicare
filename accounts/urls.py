@@ -1,11 +1,16 @@
 from django.urls import path
 from . import views
 
-from django.contrib.auth.views import LogoutView
 urlpatterns = [
+    # توجيه URL لصفحة التسجيل
     path('register/', views.register, name='register'),
-    path('', views.login, name='login'),
-    
 
-    # اضف المسارات الأخرى هنا
+    # توجيه URL لصفحة تسجيل الدخول
+    path('', views.user_login, name='login'),
+
+    # توجيه URL لصفحة البروفايل بعد تسجيل الدخول بنجاح
+    path('profile/', views.profile, name='profile'),
+
+    # توجيه URL لصفحة تسجيل الخروج
+    path('logout/', views.user_logout, name='logout'),
 ]

@@ -17,7 +17,7 @@
                                 <br>
                                 Donec eu libero sit amet quam egestas semper.
                             </p>
-                            <a href="#">our services</a>
+                            <a href="{% url 'Home_Services' %}">our services</a>
                         </div>
                     </div>
                 </div>
@@ -148,192 +148,170 @@
 
 
     <!--DEPARTMENT-->
-    <div class="uni-hơm-1-department">
-        <div class="container">
-            <div class="uni-home-title">
-                <h3>Department</h3>
-                <div class="uni-underline"></div>
-            </div>
-            <div class="uni-shortcode-icon-box-1">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="uni-shortcode-icon-box-1-default">
-                            <div class="item-icons">
-                                <img src="{% static 'images/icons_box/icon_1/icon-5.png' %}" alt="" class="img-responsive">
-                            </div>
-                            <div class="item-caption">
-                                <h4>cardiology</h4>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                    fames ac turpis egestas adipisicing.</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-md-4 col-sm-6">
-                        <div class="uni-shortcode-icon-box-1-default">
-                            <div class="item-icons">
-                                <img src="{% static 'images/icons_box/icon_1/icon-4.png' %}" alt="" class="img-responsive">
-                            </div>
-                            <div class="item-caption">
-                                <h4>Neurology</h4>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                    fames ac turpis egestas adipisicing.</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-md-4 col-sm-6">
-                        <div class="uni-shortcode-icon-box-1-default">
-                            <div class="item-icons">
-                                <img src="{% static 'images/icons_box/icon_1/icon-3.png' %}" alt="" class="img-responsive">
-                            </div>
-                            <div class="item-caption">
-                                <h4>Orthopedics</h4>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                    fames ac turpis egestas adipisicing.</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-md-4 col-sm-6">
-                        <div class="uni-shortcode-icon-box-1-default">
-                            <div class="item-icons">
-                                <img src="{% static 'images/icons_box/icon_1/icon-2.png' %}" alt="" class="img-responsive">
-                            </div>
-                            <div class="item-caption">
-                                <h4>cancer department</h4>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                    fames ac turpis egestas adipisicing.</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-md-4 col-sm-6">
-                        <div class="uni-shortcode-icon-box-1-default">
-                            <div class="item-icons">
-                                <img src="{% static 'images/icons_box/icon_1/icon-1.png' %}" alt="" class="img-responsive">
-                            </div>
-                            <div class="item-caption">
-                                <h4>Ophthalmology</h4>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                    fames ac turpis egestas adipisicing.</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-md-4 col-sm-6">
-                        <div class="uni-shortcode-icon-box-1-default">
-                            <div class="item-icons">
-                                <img src="{% static 'images/icons_box/icon_1/icon.png' %}" alt="" class="img-responsive">
-                            </div>
-                            <div class="item-caption">
-                                <h4>Respiratory</h4>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                    fames ac turpis egestas adipisicing.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!DOCTYPE html>
+<html>
+<head>
+    <div class="uni-home-title">
+        
     
 
-    <!--OUR DOCTOR-->
-    <div class="uni-home-1-our-doctor">
-        <div class="uni-shortcode-team-2 uni-background-2">
-            <div class="container">
     
-                <div class="uni-home-title">
-                    <h3>Our Doctor</h3>
-                    <div class="uni-underline"></div>
+    <style>
+        /* Apply flexbox to the row to create a grid layout */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Make each department item equal width and wrap to the next line if necessary */
+        .col-md-4 {
+            flex: 0 0 33.33%; /* 3 items per row (100% / 3) */
+            max-width: 33.33%; /* 3 items per row (100% / 3) */
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        /* Style for the container of each department item */
+        .uni-departments-default {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        /* Style for the department name */
+        .uni-departments-default h4 {
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        /* Style for the department description */
+        .uni-departments-default p {
+            font-size: 14px;
+        }
+
+        /* Style for the department image */
+        .uni-departments-default .item-icons img {
+            width: 100%; /* Ensure the image fills the container */
+            height: auto; /* Maintain the aspect ratio of the image */
+        }
+    </style>
+</head>
+
+<body>
+    
+    
+    
+
+<div class="uni-departments-body">
+    <div class="uni-home-title">
+        <h3>departments</h3>
+        <div class="uni-underline"></div>
+    </div>
+    <div class="container">
+        
+        <div class="row">
+            {% for department in departments %}
+            <div class="col-md-4">
+                <div class="uni-departments-default">
+                    <!-- Display the department image -->
+                    <div class="item-icons">
+                        <!-- Use the static URL to get the image path -->
+                        <a href="#"><img src="{{ department.image.url }}" alt="{{ department.name }} Image" class="img-responsive"></a>
+                    </div>
+                    <div class="item-caption">
+                        <h4><a href="{% url 'department_detail' department.id %}">{{ department.name }}</a></h4>
+                        <p>{{ department.description }}</p>
+                    </div>
                 </div>
-    
-                <div class="uni-owl-four-item owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="uni-team-default">
-                            <div class="item-img">
-                                <img src="{% static 'images/team/img.png' %}" alt="" class="img-responsive">
-                            </div>
-                            <div class="item-caption">
-                                <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
-                                    <div class="item-icons">
-                                        <img src="{% static 'images/icons_box/icon_4/icon-5.png' %}" alt="">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+    <!--Our Doctor-->
+<div class="uni-home-title">
+    <h3>Our Doctors</h3>
+    <div class="uni-underline"></div>
+</div>
+<div class="uni-our-doctor-body">
+    <div class="container">
+        <div class="uni-shortcode-tabs-default">
+            <div class="uni-shortcode-tab-2">
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs">
+                            {% for department in departments %}
+                            <li {% if forloop.first %}class="active"{% endif %}>
+                                <a href="#tab_default_{{ department.id }}" data-toggle="tab" aria-expanded="false">
+                                    {{ department.name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="tab-content">
+                            {% for department in departments %}
+                            <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab_default_{{ department.id }}">
+                                <div class="row">
+                                    {% for doctor in department.doctor_set.all %}
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="uni-our-doctor-item-default">
+                                            <div class="item-img">
+                                                <!-- ينقلك إلى صفحة التفاصيل عند النقر على اسم الطبيب -->
+                                                <a href="{% url 'doctor_detail' doctor.id %}">
+                                                    <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}" class="img-responsive">
+                                                </a>
+                                            </div>
+                                            <div class="item-caption">
+                                                <div class="item-caption-head">
+                                                    <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
+                                                        <div class="item-icons">
+                                                            <img src="{% static 'images/icons_box/icon_4/icon-5.png' %}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
+                                                        <div class="item-title">
+                                                            <!-- ينقلك إلى صفحة التفاصيل عند النقر على اسم الطبيب -->
+                                                            <a href="{% url 'doctor_detail' doctor.id %}">
+                                                                <h4>{{ doctor.name }}</h4>
+                                                            </a>
+                                                            <span>{{ doctor.degree }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="item-caption-info">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Degree</td>
+                                                                <td>{{ doctor.degree }}</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Availability</td>
+                                                                <td>{{ doctor.availability }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
-                                    <div class="item-title">
-                                        <h4>adam jonson</h4>
-                                        <span>Cardiologist</span>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="uni-team-default">
-                            <div class="item-img">
-                                <img src="{% static 'images/team/img1.png' %}" alt="" class="img-responsive">
-                            </div>
-                            <div class="item-caption">
-                                <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
-                                    <div class="item-icons">
-                                        <img src="{% static 'images/icons_box/icon_4/icon-4.png' %}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
-                                    <div class="item-title">
-                                        <h4>Henrik larssom</h4>
-                                        <span>neurologist</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="uni-team-default">
-                            <div class="item-img">
-                                <img src="{% static 'images/team/img2.png' %}" alt="" class="img-responsive">
-                            </div>
-                            <div class="item-caption">
-                                <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
-                                    <div class="item-icons">
-                                        <img src="{% static 'images/icons_box/icon_4/icon-3.png' %}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
-                                    <div class="item-title">
-                                        <h4>amanda smith</h4>
-                                        <span>Ophthalmology doctor</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="uni-team-default">
-                            <div class="item-img">
-                                <img src="{% static 'images/team/img3.png' %}" alt="" class="img-responsive">
-                            </div>
-                            <div class="item-caption">
-                                <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
-                                    <div class="item-icons">
-                                        <img src="{% static 'images/icons_box/icon_4/icon-2.png' %}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
-                                    <div class="item-title">
-                                        <h4>david martin</h4>
-                                        <span>Cancer doctor</span>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+ 
     
 
 
@@ -368,7 +346,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="#" class="readmore">Read more</a>
+                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -392,7 +370,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="#" class="readmore">Read more</a>
+                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -416,7 +394,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="#" class="readmore">Read more</a>
+                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -440,7 +418,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="#" class="readmore">Read more</a>
+                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -464,7 +442,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="#" class="readmore">Read more</a>
+                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -488,7 +466,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="#" class="readmore">Read more</a>
+                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>

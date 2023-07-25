@@ -145,18 +145,33 @@
             </div></div>
 
 <!--TREATMENTS INVENSTIGATION-->
-<div class="row">
-    <div class="col-md-6">
-        <div class="uni-single-departments-treatments-investigation">
-            <h3 class="uni-single-departments-right-title">Medicines</h3>
-            <div class="uni-divider"></div>
-            <ul>
-                {% for medicine in medicines %}
-                <li>
-                    {{ medicine.name }} <span>{{ medicine.price }} $</span>
-                </li>
-                {% endfor %}
-            </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="uni-single-departments-treatments-investigation">
+                <h3 class="uni-single-departments-right-title">Medicines</h3>
+                <div class="uni-divider"></div>
+                <ul>
+                    {% for medicine in medicines %}
+                    <li>
+                        {{ medicine.name }} <span>{{ medicine.price }} $</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="uni-single-departments-treatments-investigation">
+                <h3 class="uni-single-departments-right-title">INVENSTIGATION</h3>
+                <div class="uni-divider"></div>
+                <ul>
+                    {% for medicine in medicines %}
+                    <li>
+                        {{ medicine.name }} <span>{{ medicine.price }} $</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
