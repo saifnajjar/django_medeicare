@@ -54,34 +54,12 @@
                 </h3>
                 <div class="uni-single-department-left-table">
                     <table class="table">
+                        {% for opening_hour in opening_hours %}
                         <tr>
-                            <td>Monday</td>
-                            <td>8:00 - 17:00</td>
+                            <td>{{ opening_hour.day }}</td>
+                            <td>{{ opening_hour.start_time }} - {{ opening_hour.end_time }}</td>
                         </tr>
-                        <tr>
-                            <td>tuesday</td>
-                            <td>8:00 - 17:00</td>
-                        </tr>
-                        <tr>
-                            <td>wednesday</td>
-                            <td>8:00 - 17:00</td>
-                        </tr>
-                        <tr>
-                            <td>thursday</td>
-                            <td>8:00 - 17:00</td>
-                        </tr>
-                        <tr>
-                            <td>friday</td>
-                            <td>8:00 - 17:00</td>
-                        </tr>
-                        <tr>
-                            <td>saturday</td>
-                            <td>8:00 - 17:00</td>
-                        </tr>
-                        <tr>
-                            <td>sunday</td>
-                            <td>8:00 - 17:00</td>
-                        </tr>
+                        {% endfor %}
                     </table>
                 </div>
             </div>

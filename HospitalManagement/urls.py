@@ -27,7 +27,7 @@ urlpatterns = [
     path( 'pages/' , include('pages.urls')),
     path( 'blog/' , include('blog.urls')),
     path( 'departments/' , include('departments.urls')),
-    path( 'shop/' , include('shop.urls')),
+    path('shop/', include('shop.urls')),
 
 
     

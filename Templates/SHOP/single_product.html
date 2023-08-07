@@ -1,7 +1,291 @@
 {% extends 'base.html' %}
+{% load static  %}
 
 {% block contact %}
 
-    <!-- Your content for the 'contact' block goes here -->
+<div style="height: 40px;"></div>
+<main id="main" class="site-main">
+    <div class="uni-single-product-body">
+        <div class="container">
+            <div id="content">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="uni-single-product-left">
+                            <div class="uni-siderbar-left">
+                                <!-- نموذج البحث -->
+                                <form action="http://medicare.vikitheme.com/html/action.php" method="post" accept-charset="utf-8">
+                                    <div class="vk-newlist-banner-test-search">
+                                        <input type="text" name="seach" placeholder="Search...">
+                                        <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                    </div>
+                                </form>
+
+                                <!-- الفئات -->
+                                <div class="vk-category">
+                                    <h3>Categories</h3>
+                                    <div class="uni-divider"></div>
+                                    <ul class="list-career">
+                                        {% for category in categories %}
+                                            <li><a href="?category={{ category.id }}"><i class="fa fa-angle-right" aria-hidden="true"></i> {{ category.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+
+                                <!-- فلتر السعر -->
+                                <div class="uni-filter-price">
+                                    <h3>Filter By Price</h3>
+                                    <div class="uni-divider"></div>
+                                    <div id="slider-range"></div>
+                                    <div class="label-filter-price"><input type="text" id="amount" readonly></div>
+                                    <button class="btn-filter-price">SEARCH</button>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <!-- أفضل البائعين -->
+                                <div class="uni-best-seller">
+                                    <h3>Best Sellers</h3>
+                                    <div class="uni-divider"></div>
+                                    <div class="vk-newlist-details">
+                                        {% for product in best_sellers %}
+                                            <div class="vk-newlist-details-newlist1 vk-book-details">
+                                                <div class="vk-best-seller-img">
+                                                    <a href="{% url 'product_detail' product.id %}"><img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-responsive"></a>
+                                                </div>
+                                                <div class="vk-best-seller-info">
+                                                    <h4><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h4>
+                                                    <ul>
+                                                        {% for star in product.stars %}
+                                                            {% if forloop.counter <= 4 %}
+                                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            {% else %}
+                                                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </ul>
+                                                    <p>${{ product.price }}</p>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="uni-single-product-right">
+                            <div id="product">
+                                <div class="product-info">
+                                    <div class="row">
+                                        <div class="col-sm-6 left image-panel">
+                                            <div id="carousel" class="flexslider thumbnail_product">
+                                                <div id="slider" class="flexslider">
+                                                    <div class="product-slide">
+                                                        <div class="img-slide">
+                                                            <!-- عرض الصورة الرئيسية للمنتج -->
+                                                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                                        </div>
+                                                        <!-- إضافة صور إضافية للمنتج إن وجد -->
+                                                        <!-- <div class="img-slide">
+                                                            <img src="path/to/second/image" alt="Second Image">
+                                                        </div> -->
+                                                        <!-- ... إضافة المزيد من الصور إن وجد ... -->
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 right">
+                                            <h1 class="product_title entry-title">{{ product.name }}</h1>
+                                            <p class="uni-box-vote">
+                                                <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                                <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                                <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                                <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                                <span><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                                                <span>(2 customer view)</span>
+                                            </p>
+                                            <p class="price">
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <span class="woocommerce-Price-currencySymbol">$</span>
+                                                    {{ product.price }}
+                                                </span>
+                                            </p>
+                                            <div class="description">
+                                                <!-- عرض وصف المنتج -->
+                                                <p>{{ product.description }}</p>
+                                            </div>
+                                            <!-- .description -->
+
+                                            <form class="cart" method="post" enctype="multipart/form-data">
+                                                <div class="quantity">
+                                                    <div class="form-group">
+                                                        <label>Quantity:</label>
+                                                        <input type="number" class="form-control qty" id="pwd" min="0" value="1">
+                                                    </div>
+                                                </div>
+                                                <button type="submit" name="add-to-cart" class="single_add_to_cart_button button alt">Add to cart</button>
+                                                <div class="clearfix"></div>
+                                            </form>
+
+                                            <!-- ... باقي التفاصيل المسترجعة من قاعدة البيانات ... -->
+                                        </div>
+                                        <!-- .summary -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="woocommerce-tabs wc-tabs-wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" id="logout">
+                                        <div class="comment-tabs">
+                                            <div class="uni-shortcode-tabs-default">
+                                                <div class="uni-shortcode-tab-3">
+                                                    <div class="tabbable-panel">
+                                                        <div class="tabbable-line">
+                                                            <ul class="nav nav-tabs wc-tabs" role="tablist">
+                                                                <li class="active">
+                                                                    <a href="#description" role="tab" data-toggle="tab">
+                                                                        Description
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#review" role="tab" data-toggle="tab" onclick="toggleReviews()">
+                                                                        Reviews
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane active" id="description">
+                                                                    <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel-description panel entry-content wc-tab" id="product-description">
+                                                                        <!-- يتم جلب وعرض وصف المنتج من قاعدة البيانات هنا -->
+                                                                        <p>{{ product.description }}</p>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="tab-pane" id="review">
+                                                                    <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab" id="tab-reviews">
+                                                                        <div class="woocommerce-Reviews">
+                                                                            <div id="comments">
+                                                                                <div class="commentlist">
+                                                                                    {% for comment in comments %}
+                                                                                    <div class="comment" style="display: flex; flex-direction: column; margin-bottom: 20px;">
+                                                                                        <div class="comment-item">
+                                                                                            <div class="comment_container">
+                                                                                                <div class="comment-left">
+                                                                                                    <img src="{% static 'images/single-product/review/img7.jpg' %}" class="avatar img-responsive" alt="">
+                                                                                                    <div class="uni-box-vote star-rating">
+                                                                                                        <!-- يمكنك تعيين تقييم التعليق هنا إذا كان لديك تقييم -->
+                                                                                                        <!-- يمكنك الاستفادة من خصائص المودل Comment لتخزين التقييم -->
+                                                                                                        <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                                                                                        <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                                                                                        <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                                                                                        <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                                                                                                        <span><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="comment-text">
+                                                                                                    <div class="meta">
+                                                                                                        <h3>{{ comment.user.username }}</h3>
+                                                                                                        <span>{{ comment.title }}</span>
+                                                                                                    </div>
+                                                                                                    <div class="description">
+                                                                                                        <p>{{ comment.message }}</p>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    {% endfor %}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                        <!-- إضافة فورم التعليق هنا -->
+                                                                        <div class="uni-single-product-add-your-review">
+                                                                            <h3>ADD YOUR REVIEW</h3>
+                                                                            <form action="{% url 'add_review' product.id %}" method="post">
+                                                                                {% csrf_token %}
+                                                                                <div class="row">
+                                                                                    <div class="form-group col-md-12">
+                                                                                        <input type="text" id="title" name="title" placeholder="Title" class="form-control" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="form-group col-md-12">
+                                                                                        <textarea class="form-control" id="message" name="message" placeholder="Message" rows="5" required></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="vk-btn-send">
+                                                                                            <button type="submit" class="btn vk-btn-primary">SUBMIT</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                            
+                                                                        <!-- عرض التعليقات المضافة -->
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ... باقي التفاصيل المسترجعة من قاعدة البيانات ... -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                            
+                            <script>
+                            function toggleReviews() {
+                                var descriptionDiv = document.getElementById("product-description");
+                                var reviewsDiv = document.getElementById("reviews-form");
+                            
+                                if (descriptionDiv.style.display === "none") {
+                                    descriptionDiv.style.display = "block";
+                                    reviewsDiv.style.display = "none";
+                                } else {
+                                    descriptionDiv.style.display = "none";
+                                    reviewsDiv.style.display = "block";
+                                }
+                            }
+                            </script>
+                            
+                            
+                            <script>
+                            function toggleReviews() {
+                                var descriptionDiv = document.getElementById("product-description");
+                                var reviewsDiv = document.getElementById("reviews-form");
+                            
+                                if (descriptionDiv.style.display === "none") {
+                                    descriptionDiv.style.display = "block";
+                                    reviewsDiv.style.display = "none";
+                                } else {
+                                    descriptionDiv.style.display = "none";
+                                    reviewsDiv.style.display = "block";
+                                }
+                            }
+                            </script>
+                            
+
+    
+     
+  
+
+
 
 {% endblock %}

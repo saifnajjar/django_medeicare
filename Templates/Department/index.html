@@ -17,7 +17,7 @@
                                 <br>
                                 Donec eu libero sit amet quam egestas semper.
                             </p>
-                            <a href="{% url 'Home_Services' %}">our services</a>
+                            <a href="">our services</a>
                         </div>
                     </div>
                 </div>
@@ -58,6 +58,10 @@
     </div>
 
     <!--OPENING HOURS AND BOOK APPOINTMENT-->
+    <!-- opening_hours_list.html -->
+
+
+
     <div class="uni-home-opening-book">
         <div class="container">
             <div class="uni-home-opening-book-content">
@@ -68,74 +72,70 @@
                                 <div class="icon">
                                     <i class="fa fa-clock-o" aria-hidden="true"></i>
                                 </div>
-                                <h4>opening hours</h4>
+                                <h4>Opening hours</h4>
                             </div>
                             <div class="uni-services-opinging-hours-content">
                                 <table class="table">
+                                    {% for opening_hour in opening_hours %}
                                     <tr>
-                                        <td>monday</td>
-                                        <td>8:00 - 17:00</td>
+                                        <td>{{ opening_hour.day }}</td>
+                                        <td>{{ opening_hour.start_time }} - {{ opening_hour.end_time }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>tuesday</td>
-                                        <td>8:00 - 17:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>wednesday</td>
-                                        <td>8:00 - 17:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>thursday</td>
-                                        <td>8:00 - 17:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>friday</td>
-                                        <td>8:00 - 17:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>sunday</td>
-                                        <td>8:00 - 17:00</td>
-                                    </tr>
+                                    {% endfor %}
                                 </table>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="uni-single-department-appointment-form">
-
                             <div class="uni-home-title">
-                                <h3>Book appoitment</h3>
+                                <h3>Book appointment</h3>
                                 <div class="uni-underline"></div>
                             </div>
-
-                            <form action="#">
+                            <form method="post" id="appointmentForm">
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="input-group form-group">
                                             <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                            <input type="text" class="form-control" name="name" value="" placeholder="your name">
+                                            <input type="text" class="form-control" name="name" value="" placeholder="Your name" required>
                                         </div>
                                         <div class="input-group form-group">
                                             <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                            <input type="tel" class="form-control" name="phone" value="" placeholder="phone number">
+                                            <input type="tel" class="form-control" name="phone" value="" placeholder="Phone number" required>
                                         </div>
                                         <div class="input-group form-group">
-                                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                                            <input type="email" class="form-control" name="email" value="" placeholder="email">
+                                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            <select class="form-control" name="department" required>
+                                                <option value="" disabled selected>Select department</option>
+                                                {% for department in departments %}
+                                                    <option value="{{ department.id }}">{{ department.name }}</option>
+                                                {% endfor %}
+                                            </select>
                                         </div>
                                         <div class="input-group form-group">
-                                            <div class="input-group date date-check-in" data-date="12-02-2017" data-date-format="mm-dd-yyyy">
+                                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            <select class="form-control" name="doctor" required>
+                                                <option value="" disabled selected>Select doctor</option>
+                                                {% for doctor in doctors %}
+                                                    <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="input-group form-group">
+                                            <div class="input-group date date-check-in" data-date="2023-07-27" data-date-format="yyyy-mm-dd">
                                                 <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                <input name="date1" class="form-control" type="text" value="12-02-2017">
+                                                <input name="date1" class="form-control" type="text" value="2023-07-27" >
                                                 <span class="input-group-addon btn"><i class="fa fa-calendar" id="ti-calendar1" aria-hidden="true"></i></span>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="col-md-7">
                                         <div class="input-group form-group">
-                                            <textarea id="message" name="phone" class="form-control" placeholder="note"></textarea>
+                                            <textarea id="note" name="note" class="form-control" placeholder="Note"></textarea>
                                         </div>
-                                        <button class="vk-btn vk-btn-send">send</button>
+                                        <button type="submit" class="vk-btn vk-btn-send">Send</button>
                                     </div>
                                 </div>
                             </form>
@@ -143,8 +143,12 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+
 
 
     <!--DEPARTMENT-->
@@ -226,6 +230,8 @@
             {% endfor %}
         </div>
     </div>
+</div>
+</div>
 </div>
 
 </body>
@@ -346,7 +352,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
+                                <a href="#" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -370,7 +376,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
+                                <a href="#" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -394,7 +400,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
+                                <a href="#" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -418,7 +424,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
+                                <a href="#" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -442,7 +448,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
+                                <a href="#" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -466,7 +472,7 @@
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget...
                                 </p>
-                                <a href="{% url 'Home_Services' %}" class="readmore">Read more</a>
+                                <a href="#" class="readmore">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -479,18 +485,21 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+    
     
 
     <!--CUSTOMERS SAY-->
     <div class="uni-home-customers-says">
         <div class="uni-shortcode-testimonials-2 uni-background-3">
             <div class="container">
-    
+
                 <div class="uni-home-title">
                     <h3>Customers say</h3>
                     <div class="uni-underline"></div>
                 </div>
-    
+
                 <div class="uni-owl-two-item owl-carousel owl-theme">
                     <div class="item">
                         <div class="uni-shortcode-testimonials-default">
@@ -600,7 +609,6 @@
             </div>
         </div>
     </div>
-    
 
     <!--FAQ'S  and LASTEST POST-->
     <div class="uni-home-faq-latest-post">
@@ -701,7 +709,7 @@
                         <div class="uni-home-latest-post-body">
                             <div class="item">
                                 <div class="item-img">
-                                    <a href="#"><img src="{% static 'images/home1/lastestpost/img2.png' %}" alt="" class="img-responsive"></a>
+                                    <a href="#"><img src="images/home1/lastestpost/img2.png" alt="" class="img-responsive"></a>
                                 </div>
                                 <div class="item-caption">
                                     <h4><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit?</a></h4>
@@ -711,7 +719,7 @@
                             <div class="uni-divider"></div>
                             <div class="item">
                                 <div class="item-img">
-                                    <a href="#"><img src="{% static 'images/home1/lastestpost/img3.png' %}" alt="" class="img-responsive"></a>
+                                    <a href="#"><img src="images/home1/lastestpost/img3.png" alt="" class="img-responsive"></a>
                                 </div>
                                 <div class="item-caption">
                                     <h4><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit?</a></h4>
@@ -721,7 +729,7 @@
                             <div class="uni-divider"></div>
                             <div class="item">
                                 <div class="item-img">
-                                    <a href="#"><img src="{% static 'images/home1/lastestpost/img4.png' %}" alt="" class="img-responsive"></a>
+                                    <a href="#"><img src="images/home1/lastestpost/img4.png" alt="" class="img-responsive"></a>
                                 </div>
                                 <div class="item-caption">
                                     <h4><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit?</a></h4>
@@ -731,7 +739,7 @@
                             <div class="uni-divider"></div>
                             <div class="item">
                                 <div class="item-img">
-                                    <a href="#"><img src="{% static 'images/home1/lastestpost/img5.png' %}" alt="" class="img-responsive"></a>
+                                    <a href="#"><img src="images/home1/lastestpost/img5.png" alt="" class="img-responsive"></a>
                                 </div>
                                 <div class="item-caption">
                                     <h4><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit?</a></h4>
@@ -744,6 +752,17 @@
             </div>
         </div>
     </div>
+
+    <!--MAP-->
+    <div class="uni-home-map">
+        <div class="uni-about-map">
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2520.355677596112!2d-0.13052618407551403!3d50.82457546821709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875859878db2cc7%3A0xff129250121f260d!2s45+Queen's+Park+Rd%2C+Brighton+BN2+0GJ%2C+V%C6%B0%C6%A1ng+Qu%E1%BB%91c+Anh!5e0!3m2!1svi!2s!4v1514436176997"  height="700" style="border:0" ></iframe>
+        </div>
+    </div>
+
+
+
+    
     
 
     

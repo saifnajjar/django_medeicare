@@ -2,6 +2,155 @@
 
 {% block contact %}
 
-    <!-- Your content for the 'contact' block goes here -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>صفحة الصيدلية</title>
+    <!-- Add any CSS or other libraries here -->
+</head>
+<body>
+    <main id="main" class="site-main">
+        <div class="uni-shop-body">
+            <div class="container">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="uni-single-product-left">
+                                <div class="uni-siderbar-left">
+                                    <form action="http://medicare.vikitheme.com/html/action.php" method="post" accept-charset="utf-8">
+                                        <div class="vk-newlist-banner-test-search">
+                                            <input type="text" name="seach" placeholder="Search...">
+                                            <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                        </div>
+                                    </form>
+
+                                    <div class="vk-category">
+                                        <h3>Categories</h3>
+                                        <div class="uni-divider"></div>
+                                        <ul class="list-career">
+                                            {% for category in categories %}
+                                                <li><a href="?category={{ category.id }}"><i class="fa fa-angle-right" aria-hidden="true"></i> {{ category.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+                                    <div class="uni-filter-price">
+                                        <h3>Filter By Price</h3>
+                                        <div class="uni-divider"></div>
+                                        <div id="slider-range"></div>
+                                        <div class="label-filter-price"><input type="text" id="amount" readonly></div>
+                                        <button class="btn-filter-price">SEARCH</button>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="uni-best-seller">
+                                        <h3>Best Sellers</h3>
+                                        <div class="uni-divider"></div>
+                                        <div class="vk-newlist-details">
+                                            {% for product in best_sellers %}
+                                                <div class="vk-newlist-details-newlist1 vk-book-details">
+                                                    <div class="vk-best-seller-img">
+                                                        <a href="{% url 'product_detail' product.id %}"><img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-responsive"></a>
+                                                    </div>
+                                                    <div class="vk-best-seller-info">
+                                                        <h4><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h4>
+                                                        <ul>
+                                                            {% for star in product.stars %}
+                                                                {% if forloop.counter <= 4 %}
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                {% else %}
+                                                                    <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </ul>
+                                                        <p>${{ product.price }}</p>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="vk-product-details">
+                                <div class="row">
+                                    {% for product in products %}
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="product-item">
+                                                <ul class="category-product">
+                                                    <li>
+                                                        <div class="wrapper">
+                                                            <div class="feature-image">
+                                                                <a href="{% url 'product_detail' product.id %}"><img class="wp-post-image img-responsive" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+                                                                {% if product.on_sale %}
+                                                                    <div class="uni-sale">
+                                                                        <span>SALE</span>
+                                                                    </div>
+                                                                {% endif %}
+                                                            </div>
+
+                                                            <div class="stats">
+                                                                <div class="box-title">
+                                                                    <h2 class="title-product">
+                                                                        <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+                                                                    </h2>
+                                                                </div>
+
+                                                                <div class="price-add-cart">
+                                                                    <div class="vote-star">
+                                                                        <ul>
+                                                                            {% for star in product.stars %}
+                                                                                {% if forloop.counter <= 4 %}
+                                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                                {% else %}
+                                                                                    <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                                                                                {% endif %}
+                                                                            {% endfor %}
+                                                                        </ul>
+                                                                    </div>
+
+                                                                    <div class="box-price">
+                                                                        <span class="price">
+                                                                            <span class="woocommerce-Price-amount amount">
+                                                                                <span class="woocommerce-Price-currencySymbol">$</span>
+                                                                                {{ product.price }}
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+
+                                                                    <div class="box-add">
+                                                                        <a href="06_03_cart.html">Add to cart</a>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
 
 {% endblock %}

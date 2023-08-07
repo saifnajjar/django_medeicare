@@ -143,18 +143,15 @@
                                                        
                                                     </ul>
                                                 </li>
-                                                <li class="has-sub"><a href='#'>Blog</a>
+                                                <li class="has-sub"><a href='{% url "home" %}'>Blog</a>
                                                     <ul>
-                                                        <li><a href="{% static '05_01_blog_list.html' %}">Blog list</a></li>
-                                                        <li><a href="{% static '05_02_blog_grid.html' %}">Blog Grid</a></li>
-                                                        <li><a href="{% static '05_03_single_post.html' %}">Single post</a></li>
+                                                        
                                                     </ul>
                                                 </li>
                                                 
-                                                <li class="has-sub"><a href='#'>shop</a>
+                                                <li class="has-sub"><a href='{% url "pharmacy" %}'>shop</a>
                                                     <ul>
-                                                        <li><a href="{% static '06_01_shop.html' %}">Shop</a></li>
-                                                        <li><a href="{% static '06_02_single_product.html' %}">Single Product</a></li>
+                                                        
                                                         <li><a href="{% static '06_03_cart.html' %}">Cart</a></li>
                                                         <li><a href="{% static '06_04_checkout.html' %}">Checkout</a></li>
                                                     </ul>

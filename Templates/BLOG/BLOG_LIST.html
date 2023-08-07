@@ -2,6 +2,197 @@
 
 {% block contact %}
 
-    <!-- Your content for the 'contact' block goes here -->
+
+{% load static %} <!-- إذا كنت تستخدم الملفات الثابتة، أضف هذا في البداية -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Home</title>
+    <!-- إضافة الرابط إلى ملف الـ CSS الخاص بك هنا -->
+</head>
+<body>
+    <div id="main-content" class="site-main-content">
+        <section class="site-content-area">
+
+            <div class="uni-banner-default uni-background-1">
+                <div class="container">
+                    <!-- Page title -->
+                    <div class="page-title">
+                        <div class="page-title-inner">
+                            <h1>blog list</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- إضافة فراغ هنا -->
+            <div style="height: 20px;"></div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="uni-blog-list">
+                            {% for category in grouped_posts %}
+                                <div class="category-posts" data-category="{{ category.category }}">
+                                    {% for post in category.posts %}
+                                        <div class="blog-list-item">
+                                            <article class="post type-post">
+                                                <div class="content-inner">
+                                                    <div class="uni-entry-top">
+                                                        <div class="thumbnail-img">
+                                                            <a href="{% url 'post_detail' post.id %}" title="">
+                                                                <img src="{{ post.image.url }}" alt="{{ post.title }}" title="" class="img-responsive">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="uni-entry-body">
+                                                        <div class="uni-entry-time">
+                                                            <ul>
+                                                                <li class="year">{{ post.date_posted|date:'Y' }}</li>
+                                                                <li class="day">{{ post.date_posted|date:'d' }}</li>
+                                                                <li class="month">{{ post.date_posted|date:'M' }}</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="uni-entry-content">
+
+                                                            <header class="uni-entry-header">
+                                                                <h2 class="uni-entry-title">
+                                                                    <a href="{% url 'post_detail' post.id %}" rel="">{{ post.title }}</a>
+                                                                </h2>
+                                                            </header>
+
+                                                            <div class="uni-entry-meta">
+                                                                <span class="uni-author">
+                                                                    <a href="#" rel="author"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date_posted }}</a>
+                                                                </span>
+                                                                <span class="uni-comment-total">
+                                                                    <a href="#" class="comments-link"><i class="fa fa-user" aria-hidden="true"></i> admin</a>
+                                                                </span>
+                                                                <span class="uni-entry-folder"><a href="#"><i class="fa fa-comment" aria-hidden="true"></i> 2 comments</a></span>
+                                                            </div>
+                                                            <div class="uni-entry-summary">
+                                                                <p>{{ post.description|truncatechars_html:200 }}</p>
+                                                            </div>
+                                                            <div class="readmore">
+                                                                <a href="{% url 'post_detail' post.id %}"><i class="icomoon icon-up"></i>Read More</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <!--Pagination blog-->
+                        <div class="uni-divider"></div>
+                        <div class="uni-pagination-blog">
+                            <ul>
+                                <li class="older-post"><a href="#"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> older post</a></li>
+                                <li class="newer-post"><a href="#">newer post <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="uni-blog-list-right">
+                            <aside id="secondary" class="widget-area">
+                                <aside class="widget">
+                                    <div class="widget-content">
+                                        <div class="uni-search-sidebar">
+                                            <form action="http://medicare.vikitheme.com/html/action.php" method="post" accept-charset="utf-8">
+                                                <div class="vk-newlist-banner-test-search">
+                                                    <input type="text" name="seach" placeholder="Search...">
+                                                    <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </aside>
+                                <aside class="widget">
+                                    <h3 class="widget-title">Categories</h3>
+                                    <div class="uni-divider"></div>
+                                    <div class="widget-content">
+                                        <div class="uni-widget-category">
+                                            <ul>
+                                                {% for category in grouped_posts %}
+                                                    <li><a href="#" class="category-link" data-category="{{ category.category }}">{{ category.category }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </aside>
+
+                                <!-- قائمة "Recent posts" -->
+                                <aside class="widget">
+                                    <h3 class="widget-title">Recent posts</h3>
+                                    <div class="uni-divider"></div>
+                                    <div class="widget-content">
+                                        <div class="uni-widget-popular-posts">
+                                            <ul>
+                                                {% for category in grouped_posts %}
+                                                    {% for post in category.posts %}
+                                                        <li>
+                                                            <div class="item-widget-popular-post">
+                                                                <div class="item-img">
+                                                                    <a href="#"><img src="{{ post.image.url }}" alt="{{ post.title }}"></a>
+                                                                </div>
+                                                                <div class="item-caption">
+                                                                    <h4><a href="#">{{ post.title }}</a></h4>
+                                                                    <div class="time"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date_posted }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // الجافا سكريبت للتبديل بين المنشورات عند النقر على روابط التصنيف
+                document.addEventListener('DOMContentLoaded', function () {
+                    const categoryLinks = document.querySelectorAll('.category-link');
+                    const categoryPosts = document.querySelectorAll('.category-posts');
+
+                    categoryLinks.forEach(link => {
+                        link.addEventListener('click', () => {
+                            const selectedCategory = link.dataset.category;
+                            categoryPosts.forEach(posts => {
+                                if (posts.dataset.category === selectedCategory) {
+                                    posts.style.display = 'block';
+                                } else {
+                                    posts.style.display = 'none';
+                                }
+                            });
+                        });
+                    });
+                });
+            </script>
+        </section>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}
