@@ -31,7 +31,7 @@ his project is a comprehensive Hospital Management Application aimed at streamli
 
 
 
-Detailed description
+# Detailed description
 
 
 1.Login and User Profiles:
@@ -98,14 +98,13 @@ Doctor Profiles:
 15.Maintenance and Support:
 
   We're here to provide ongoing maintenance and support to address any issues or updates.
-![01](https://github.com/saifnajjar/django_medeicare/assets/76654964/ef55b0c0-ba1c-45c2-b060-e69c51d11c61)
-![02](https://github.com/saifnajjar/django_medeicare/assets/76654964/87cd00fe-7324-422b-b792-abf2b999f1a5)
-![04](https://github.com/saifnajjar/django_medeicare/assets/76654964/9c02c1d7-4884-400b-8869-bdc1f5dbaf81)
-![05](https://github.com/saifnajjar/django_medeicare/assets/76654964/927d084c-fdc1-4b63-9749-7d6e05e3d84a)
-![05](https://github.com/saifnajjar/django_medeicare/assets/76654964/3b2ba5de-55ed-4161-89af-0079a9082f90)
-![00](https://github.com/saifnajjar/django_medeicare/assets/76654964/98ebdab6-fc61-46b5-b5cf-3ec62458c096)
-![08](https://github.com/saifnajjar/django_medeicare/assets/76654964/c16ad997-1410-4367-aa2c-389e1a64ea30)
-
+![01](https://github.com/saifnajjar/django_medeicare/assets/76654964/d1619988-0f59-4589-b4a7-61af60a7b84f)
+![02](https://github.com/saifnajjar/django_medeicare/assets/76654964/ffc69427-4dcc-45fd-9bfe-23595fc34d42)
+![03](https://github.com/saifnajjar/django_medeicare/assets/76654964/6d0dd125-686d-49b3-8b3a-be3a7626568b)
+![05](https://github.com/saifnajjar/django_medeicare/assets/76654964/8bf37cb8-560b-47d5-8e2d-b68d079ada10)
+![06](https://github.com/saifnajjar/django_medeicare/assets/76654964/937279f1-513d-46e4-b2aa-d37574d893f2)
+![08](https://github.com/saifnajjar/django_medeicare/assets/76654964/bef7463c-50ab-4fe8-9a03-510ce9935259)
+![00](https://github.com/saifnajjar/django_medeicare/assets/76654964/c9ad9815-dd50-43dd-9739-53921e14d76f)
 
   
 
