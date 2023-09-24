@@ -1,4 +1,3 @@
-![Screenshot 2023-09-24 160154](https://github.com/saifnajjar/django_medeicare/assets/76654964/5eb9aa60-0e1b-4ae1-8795-45c187a48970)
 
 
 # About The Project
