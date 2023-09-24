@@ -98,19 +98,13 @@ Doctor Profiles:
 15.Maintenance and Support:
 
   We're here to provide ongoing maintenance and support to address any issues or updates.
-
-![Uploading 01.png…]()
-
+![01](https://github.com/saifnajjar/django_medeicare/assets/76654964/ef55b0c0-ba1c-45c2-b060-e69c51d11c61)
 ![02](https://github.com/saifnajjar/django_medeicare/assets/76654964/87cd00fe-7324-422b-b792-abf2b999f1a5)
-
-  
 ![04](https://github.com/saifnajjar/django_medeicare/assets/76654964/9c02c1d7-4884-400b-8869-bdc1f5dbaf81)
-
-
-
 ![05](https://github.com/saifnajjar/django_medeicare/assets/76654964/927d084c-fdc1-4b63-9749-7d6e05e3d84a)
 ![05](https://github.com/saifnajjar/django_medeicare/assets/76654964/3b2ba5de-55ed-4161-89af-0079a9082f90)
-
+![00](https://github.com/saifnajjar/django_medeicare/assets/76654964/98ebdab6-fc61-46b5-b5cf-3ec62458c096)
+![08](https://github.com/saifnajjar/django_medeicare/assets/76654964/c16ad997-1410-4367-aa2c-389e1a64ea30)
 
 
   
