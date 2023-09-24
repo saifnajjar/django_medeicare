@@ -38,38 +38,52 @@ Detailed description
 
 
 1.Login and User Profiles:
-  Patients can create their personal accounts and log in to access their profiles.
+    
+Patients can create their personal accounts and log in to access their profiles.
 2.Hospital Departments:
-  You can explore different hospital departments, each with its own description and available services.
+
+You can explore different hospital departments, each with its own description and available services.
 Doctor Profiles:
+ 
   Discover detailed profiles of our doctors, including their names, specialties, and contact information.
 3.Appointment Booking:
+ 
   Schedule appointments with your preferred doctors at your convenience.
 4.Medical Records:
+ 
   Access your medical history, including diagnoses, prescriptions, and treatment records.
 5.Hospital Store (E-commerce):
+  
   Browse and purchase medical supplies and medications securely.
 5.Hospital News and Announcements:
   Stay informed about the latest hospital news, announcements, and health articles.
 6.Admin Panel:
+ 
   Our hospital staff uses an admin panel to manage the entire system, ensuring smooth operations.
 7.Notification System:
+ 
   Receive email or SMS notifications for appointment confirmations, reminders, and updates.
 8.Search and Filters:
+  
   Easily find doctors, departments, and products using our search and filter features.
 9.Security and Privacy:
   We prioritize the confidentiality and security of your medical data.
 10.Scalability and Performance:
+ 
   Count on us for a fast and reliable experience, even with a large number of users and data.
 11.Backup and Data Recovery:
   We regularly back up your data to prevent any loss.
 12.Testing and Quality Assurance:
+ 
   We've rigorously tested the application to ensure its reliability.
 13.Documentation:
+ 
   You can find comprehensive user and developer documentation for easy reference.
 14.Deployment and Hosting:
+ 
   Our application is hosted on a secure and reliable platform.
 15.Maintenance and Support:
+
   We're here to provide ongoing maintenance and support to address any issues or updates.
 
 
