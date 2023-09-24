@@ -99,8 +99,17 @@ Doctor Profiles:
 
   We're here to provide ongoing maintenance and support to address any issues or updates.
 
+![Uploading 01.png…]()
+
+![02](https://github.com/saifnajjar/django_medeicare/assets/76654964/87cd00fe-7324-422b-b792-abf2b999f1a5)
+
+  
+![04](https://github.com/saifnajjar/django_medeicare/assets/76654964/9c02c1d7-4884-400b-8869-bdc1f5dbaf81)
 
 
+
+![05](https://github.com/saifnajjar/django_medeicare/assets/76654964/927d084c-fdc1-4b63-9749-7d6e05e3d84a)
+![05](https://github.com/saifnajjar/django_medeicare/assets/76654964/3b2ba5de-55ed-4161-89af-0079a9082f90)
 
 
 
