@@ -98,6 +98,6 @@ Doctor Profiles:
 
   We're here to provide ongoing maintenance and support to address any issues or updates.
 
-![WhatsApp Image 2023-09-25 at 12 12 02 AM](https://github.com/saifnajjar/django_medeicare/assets/76654964/e907920c-4596-4286-928d-79afaac1d0af)
+![WhatsApp Image 2023-09-25 at 12 12 02 AM (1)](https://github.com/saifnajjar/django_medeicare/assets/76654964/eb099fed-ef43-4b3f-85de-19e347551e07)
 
 
